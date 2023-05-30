@@ -3,6 +3,7 @@ package nextstep.lms.domain;
 import nextstep.global.domain.BaseTimeDomain;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Course extends BaseTimeDomain {
     private Long id;
@@ -38,6 +39,10 @@ public class Course extends BaseTimeDomain {
         sessions.add(session);
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public Sessions getSessions() {
         return sessions;
     }
@@ -67,5 +72,18 @@ public class Course extends BaseTimeDomain {
                 ", title='" + title + '\'' +
                 ", creatorId=" + creatorId +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return generation == course.generation && Objects.equals(id, course.id) && Objects.equals(sessions, course.sessions) && Objects.equals(title, course.title) && Objects.equals(creatorId, course.creatorId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, sessions, generation, title, creatorId);
     }
 }

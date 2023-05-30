@@ -6,4 +6,8 @@ public abstract class BaseTimeDomain {
     protected LocalDateTime createdDate;
 
     protected LocalDateTime updatedDate;
+
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
+    }
 }
